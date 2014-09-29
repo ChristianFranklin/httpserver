@@ -14,7 +14,10 @@ namespace httpserver
         }
 
         // dette er en test
+<<<<<<< HEAD
         // hey 
+=======
+
 
 
 
@@ -22,6 +25,7 @@ namespace httpserver
 
 
         // test 2
+>>>>>>> 08e57910b8ae940f44898bb901c459c2cd9ff9c2
     }
 
 }
