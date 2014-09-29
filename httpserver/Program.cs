@@ -13,15 +13,7 @@ namespace httpserver
             Console.WriteLine("Hello http server");
         }
 
-        // dette er en test
-        // hey 
-
-
-
-
-
-
-        // test 2
+        
     }
 
 }
