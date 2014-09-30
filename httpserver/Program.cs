@@ -12,18 +12,15 @@ namespace httpserver
 {
     class Program
     {
-         public static void Main(string[] args)
-     {  
-        HttpListener serverSocket = new HttpListener(80);
-        serverSocket.Start();
+         private static void Main(string[] args)
+     {
+         TcpListener serverSocket = new TcpListener(8080);
+         serverSocket.Start();
+         TcpClient tcpConnection = serverSocket.AcceptTcpClient();
 
-        Stream ns = connectionSocket.GetStream();
-        // Stream ns = new NetworkStream(connectionSocket);
-
-    
-        StreamReader sr = new StreamReader(ns);
-        StreamWriter sw = new StreamWriter(ns);
-        
+         Console.WriteLine("Server Not STARTED");
+         HttpServer httpServer = new HttpServer(tcpConnection);
+         serverSocket.Stop();
  
                    
 
@@ -31,7 +28,7 @@ namespace httpserver
 
 
 
-        Console.WriteLine("Hello http server");
+        
      }
         
            
