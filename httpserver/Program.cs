@@ -23,9 +23,9 @@ namespace httpserver
     
         StreamReader sr = new StreamReader(ns);
         StreamWriter sw = new StreamWriter(ns);
-        sw.AutoFlush = true; 
+        
  
-
+                   
 
 
 
