@@ -36,10 +36,10 @@ namespace httpserver
             message = sr.ReadLine();
             Console.WriteLine(message);
             //response
-            string answer = "HTTP/1.0 200 OK\r\n\r\nHello Payam!" + rn + "Rn test";
+            string answer = "HTTP/1.0 200 OK\r\n\r\nHello Payam!" + rn + "Hello Christian!";
             sw.WriteLine(answer);
             Console.WriteLine(answer);
-
+                
             ns.Close();
             connectionSocket.Close();
         }
