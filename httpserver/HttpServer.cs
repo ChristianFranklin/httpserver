@@ -12,6 +12,8 @@ namespace httpserver
     {
         public static readonly int DefaultPort = 8888;
         private TcpClient _connectionSocket;
+        private static readonly string RootCatalog = "c:/WebServer";
+
 
 
         public HttpServer(TcpClient connectionSocket)
@@ -22,7 +24,7 @@ namespace httpserver
             //Socket connectionSocket = serverSocket.AcceptSocket();
             Console.WriteLine("Connected: {0}");
 
-            Stream ns = connectionSocket.GetStream();
+            NetworkStream ns = connectionSocket.GetStream();
             // Stream ns = new NetworkStream(connectionSocket);
 
             StreamReader sr = new StreamReader(ns);
@@ -31,12 +33,12 @@ namespace httpserver
 
 
             string[] sArray = new string[3];
-            
-           
-            string message = sr.ReadLine();
-            sArray = message.Split(' '); 
-            Console.WriteLine(sArray.GetValue(1));
 
+
+            string message = sr.ReadLine();
+            sArray = message.Split(' ');
+            Console.WriteLine(sArray.GetValue(1));
+            findfil(sArray.GetValue(1).ToString(), ns);
 
             //request
             Console.WriteLine("Client: " + message);
@@ -49,10 +51,27 @@ namespace httpserver
 
             ns.Close();
             connectionSocket.Close();
+         }
 
-        }
+            public void findfil(string filnavn, NetworkStream network)
 
-        
+                   
+            {
+                FileStream fs = File.OpenRead(RootCatalog + filnavn);
+                fs.CopyTo(network);
+            }
 
-    }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+}
