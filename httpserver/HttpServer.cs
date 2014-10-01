@@ -30,14 +30,12 @@ namespace httpserver
             sw.AutoFlush = true; // enable automatic flushing
 
 
+            string[] sArray = new string[3];
             
-
-
-
+           
             string message = sr.ReadLine();
-            message.Split(' ');
-
-
+            sArray = message.Split(' '); 
+            Console.WriteLine(sArray.GetValue(1));
 
 
             //request

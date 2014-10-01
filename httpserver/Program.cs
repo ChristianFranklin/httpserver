@@ -21,7 +21,7 @@ namespace httpserver
              {
                  TcpClient tcpConnection = serverSocket.AcceptTcpClient();
 
-                 Console.WriteLine("Server Not STARTED");
+                 Console.WriteLine("Server STARTED");
                  HttpServer httpServer = new HttpServer(tcpConnection);
              }
              serverSocket.Stop();
