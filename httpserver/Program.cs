@@ -16,11 +16,15 @@ namespace httpserver
      {
          TcpListener serverSocket = new TcpListener(8080);
          serverSocket.Start();
-         TcpClient tcpConnection = serverSocket.AcceptTcpClient();
 
-         Console.WriteLine("Server Not STARTED");
-         HttpServer httpServer = new HttpServer(tcpConnection);
-         serverSocket.Stop();
+             while (true)
+             {
+                 TcpClient tcpConnection = serverSocket.AcceptTcpClient();
+
+                 Console.WriteLine("Server Not STARTED");
+                 HttpServer httpServer = new HttpServer(tcpConnection);
+             }
+             serverSocket.Stop();
  
                    
 
