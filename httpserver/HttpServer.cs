@@ -39,6 +39,7 @@ namespace httpserver
             message = sr.ReadLine();
             Console.WriteLine(message);
 
+        
             using (fs = File.OpenRead(RootCatalog))
             {
 
@@ -63,6 +64,7 @@ namespace httpserver
             FileStream fs = File.OpenRead(RootCatalog + filnavn);
             fs.CopyTo(network);
         }
+           
     }
    }
  }
