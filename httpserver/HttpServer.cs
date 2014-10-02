@@ -57,11 +57,6 @@ namespace httpserver
                 _connectionSocket.Close();
             }
         
-
-            
-        
-
-
         public void findfil(string filnavn, NetworkStream network)
         {
             if (File.Exists(RootCatalog + filnavn))
