@@ -12,33 +12,33 @@ namespace httpserver
 {
     class Program
     {
-         private static void Main(string[] args)
-     {
-         TcpListener serverSocket = new TcpListener(8080);
-         serverSocket.Start();
+        private static void Main(string[] args)
+        {
+            TcpListener serverSocket = new TcpListener(8080);
+            serverSocket.Start();
 
-             while (true)
-             {
-                 TcpClient tcpConnection = serverSocket.AcceptTcpClient();
+            while (true)
+            {
+                TcpClient tcpConnection = serverSocket.AcceptTcpClient();
 
-                 Console.WriteLine("Server STARTED");
-                 HttpServer httpServer = new HttpServer(tcpConnection);
-             }
-             serverSocket.Stop();
- 
-                   
+                Console.WriteLine("Server STARTED");
+                HttpServer httpServer = new HttpServer(tcpConnection);
+            }
+            serverSocket.Stop();
 
 
 
 
 
-        
-     }
-        
-           
-        
 
-         
+
+
+        }
+
+
+
+
+
     }
 
 }

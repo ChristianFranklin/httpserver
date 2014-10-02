@@ -54,20 +54,20 @@ namespace httpserver
             }
 
 
-            public static bool Exists;
-        {
-            string path = RootCatalog();
-            File.Exists(path);
-        }
-        
-            
+       
 
             public void findfil(string filnavn, NetworkStream network)
             
                  
             {
-                FileStream fs = File.OpenRead(RootCatalog + filnavn);
-                fs.CopyTo(network);
+                if (File.Exists(RootCatalog + filnavn))
+                {
+                    FileStream fs = File.OpenRead(RootCatalog + filnavn);
+                    fs.CopyTo(network);
+                }
+
+
+               
             }
 
 
