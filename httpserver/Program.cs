@@ -7,11 +7,13 @@ using System.Net.Configuration;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using httpserver;
 
 namespace httpserver
 {
     class Program
     {
+        public static TcpClient TcpClient;
         private static void Main(string[] args)
         {
             TcpListener serverSocket = new TcpListener(8080);
@@ -22,8 +24,18 @@ namespace httpserver
                 TcpClient tcpConnection = serverSocket.AcceptTcpClient();
 
                 Console.WriteLine("Server STARTED");
-                HttpServer httpServer = new HttpServer(tcpConnection);
+                
+                Task.Factory.StartNew(() =>
+                {
+                        HttpServer httpServer = new HttpServer(tcpConnection);
+                    httpServer._connectionSocket.GetStream();
+                        tcpConnection.Close();
+                });
             }
+
         }
+        }
+
+        
     }
-}
+

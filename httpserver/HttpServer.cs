@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,21 +12,20 @@ namespace httpserver
     public class HttpServer
     {
         public static readonly int DefaultPort = 8888;
-        private TcpClient _connectionSocket;
-        private static readonly string RootCatalog = "C:/Users/Payam/Desktop/Open.html";
+        public TcpClient _connectionSocket;
+        private static readonly string RootCatalog = "C:/Users/Christian Eriksen/Desktop/open.html";
         private FileStream fs;
 
+        const string rn = "\r\n";
 
-        public HttpServer(TcpClient connectionSocket)
-        {
-
-            const string rn = "\r\n";
-
-            Console.WriteLine("Connected: {0}");
-
-            NetworkStream ns = connectionSocket.GetStream();
             
-
+        public HttpServer(TcpClient _konnectionSocket)
+        {
+            _connectionSocket = _konnectionSocket;
+        }
+        public void connection()
+            {
+            NetworkStream ns = _connectionSocket.GetStream();
             StreamReader sr = new StreamReader(ns);
             StreamWriter sw = new StreamWriter(ns);
             sw.AutoFlush = true; 
@@ -53,10 +53,13 @@ namespace httpserver
                 sw.BaseStream.Flush();
                 sw.Flush();
             }
+                ns.Close();
+                _connectionSocket.Close();
+            }
+        
 
-            ns.Close();
-            connectionSocket.Close();
-        }
+            
+        
 
 
         public void findfil(string filnavn, NetworkStream network)
@@ -66,6 +69,8 @@ namespace httpserver
                 FileStream fs = File.OpenRead(RootCatalog + filnavn);
                 fs.CopyTo(network);
             }
+                
         }
+
     }
 }
