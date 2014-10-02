@@ -12,7 +12,9 @@ namespace httpserver
     {
         public static readonly int DefaultPort = 8888;
         private TcpClient _connectionSocket;
-        private static readonly string RootCatalog = "c:/WebServer";
+        private static readonly string RootCatalog = "C:/Users/Payam/Desktop/Open.html";
+        private FileStream fs;
+
 
 
 
@@ -45,10 +47,23 @@ namespace httpserver
             message = sr.ReadLine();
             Console.WriteLine(message);
             //response
+
+
+            using (fs = File.OpenRead(RootCatalog))
+            {
+                
+
             string answer = "HTTP/1.0 200 OK\r\n\r\nHello Payam!" + rn + "Hello Christian!";
             sw.WriteLine(answer);
             Console.WriteLine(answer);
+                
+                fs.CopyTo(sw.BaseStream);
+                sw.BaseStream.Flush();
+                sw.Flush();
+            }
+            
 
+          
             ns.Close();
             connectionSocket.Close();
             }
@@ -70,8 +85,7 @@ namespace httpserver
                
             }
 
-
-        
+  
 
 
 
