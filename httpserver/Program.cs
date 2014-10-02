@@ -24,21 +24,6 @@ namespace httpserver
                 Console.WriteLine("Server STARTED");
                 HttpServer httpServer = new HttpServer(tcpConnection);
             }
-            //serverSocket.Stop();
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
     }
-
 }
