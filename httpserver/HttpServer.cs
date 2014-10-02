@@ -16,7 +16,7 @@ namespace httpserver
         private static readonly string RootCatalog = "C:/Users/Christian Eriksen/Desktop/open.html";
         private FileStream fs;
 
-<<<<<<< HEAD
+
         const string rn = "\r\n";
 
             
@@ -27,7 +27,7 @@ namespace httpserver
         public void connection()
             {
             NetworkStream ns = _connectionSocket.GetStream();
-=======
+
         public HttpServer(TcpClient connectionSocket)
         {
 
@@ -37,7 +37,7 @@ namespace httpserver
 
             NetworkStream ns = connectionSocket.GetStream();
             
->>>>>>> dfb92264b610b9771aaaf8723740896113e7b851
+
             StreamReader sr = new StreamReader(ns);
             StreamWriter sw = new StreamWriter(ns);
             sw.AutoFlush = true; 
@@ -65,24 +65,24 @@ namespace httpserver
                 sw.BaseStream.Flush();
                 sw.Flush();
             }
-<<<<<<< HEAD
+
                 ns.Close();
                 _connectionSocket.Close();
             }
         
-=======
+
 
             ns.Close();
             connectionSocket.Close();
         }
 
->>>>>>> dfb92264b610b9771aaaf8723740896113e7b851
+
         public void findfil(string filnavn, NetworkStream network)
     {
         if (File.Exists(RootCatalog + filnavn))
 
         {
-<<<<<<< HEAD
+
             if (File.Exists(RootCatalog + filnavn))
             {
                 FileStream fs = File.OpenRead(RootCatalog + filnavn);
@@ -91,12 +91,11 @@ namespace httpserver
                 
         }
 
-=======
             FileStream fs = File.OpenRead(RootCatalog + filnavn);
             fs.CopyTo(network);
         }
            
->>>>>>> dfb92264b610b9771aaaf8723740896113e7b851
+
     }
    }
  }
