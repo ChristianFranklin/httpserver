@@ -51,8 +51,7 @@ namespace httpserver
 
             using (fs = File.OpenRead(RootCatalog))
             {
-                
-
+             
             string answer = "HTTP/1.0 200 OK\r\n\r\nHello Payam!" + rn + "Hello Christian!";
             sw.WriteLine(answer);
             Console.WriteLine(answer);
@@ -61,17 +60,12 @@ namespace httpserver
                 sw.BaseStream.Flush();
                 sw.Flush();
             }
-            
 
-          
             ns.Close();
             connectionSocket.Close();
             }
 
-
-       
-
-            public void findfil(string filnavn, NetworkStream network)
+        public void findfil(string filnavn, NetworkStream network)
             
                  
             {
@@ -84,10 +78,6 @@ namespace httpserver
 
                
             }
-
-  
-
-
 
 
 }
