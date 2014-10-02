@@ -51,24 +51,27 @@ namespace httpserver
 
             ns.Close();
             connectionSocket.Close();
-         }
+            }
+
+
+            public static bool Exists;
+        {
+            string path = RootCatalog();
+            File.Exists(path);
+        }
+        
+            
 
             public void findfil(string filnavn, NetworkStream network)
-
-                   
+            
+                 
             {
                 FileStream fs = File.OpenRead(RootCatalog + filnavn);
                 fs.CopyTo(network);
             }
 
 
-
-
-
-
-
-
-
+        
 
 
 
